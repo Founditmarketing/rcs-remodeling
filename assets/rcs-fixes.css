@@ -275,10 +275,26 @@ img.wp-image-61 {
 
 /* ---------- 7. DESKTOP: keep all header menu items on ONE line ---------- */
 @media (min-width: 981px) {
-  /* give the menu column more room, trim the badge columns */
-  .et_pb_column_3_tb_header { width: 18% !important; }
-  .et_pb_column_4_tb_header { width: 14% !important; }
-  .et_pb_column_5_tb_header { width: 68% !important; }
+  /* column split: more room for a bigger logo/badge, menu still wide enough
+     to keep all items on one line */
+  .et_pb_column_3_tb_header { width: 24% !important; }
+  .et_pb_column_4_tb_header { width: 9% !important; }
+  .et_pb_column_5_tb_header { width: 67% !important; }
+  /* Enlarge logo + Terrell badge. Heights stay below the menu module (~54px),
+     which drives the header height, so the header does NOT get taller. */
+  .et_pb_image_2_tb_header { width: 100% !important; max-width: 100% !important; }
+  .et_pb_image_2_tb_header img {
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 50px !important;
+  }
+  .et_pb_image_3_tb_header { width: auto !important; max-width: 100% !important; }
+  .et_pb_image_3_tb_header img {
+    width: auto !important;
+    max-width: 100% !important;
+    height: 46px !important;
+  }
   /* never wrap the top row; flex-wrap (not white-space) keeps items on one
      line so nowrap does NOT inherit into the dropdown submenu. */
   .et_pb_menu_1_tb_header .et-menu-nav > ul.et-menu {
@@ -359,3 +375,45 @@ img.wp-image-61 {
     padding-top: 0 !important;
   }
 }
+
+/* ---------- 11. CUSTOMER REVIEWS (replaces the empty TrustIndex widget) ---------- */
+.rcs-reviews {
+  column-count: 3;
+  column-gap: 22px;
+  max-width: 1180px;
+  margin: 12px auto 0;
+  padding: 0 12px;
+}
+@media (max-width: 1080px) { .rcs-reviews { column-count: 2; } }
+@media (max-width: 700px)  { .rcs-reviews { column-count: 1; } }
+.rcs-review {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin: 0 0 22px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  text-align: left;
+}
+.rcs-review-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.rcs-review-avatar {
+  flex: 0 0 auto;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  color: #fff;
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  font-weight: 700; font-size: 19px;
+  display: flex; align-items: center; justify-content: center;
+}
+.rcs-review-name { display: block; font-family: 'Poppins', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 16px; color: #131315; line-height: 1.2; }
+.rcs-review-meta { display: block; font-size: 12px; color: #808080; margin-top: 2px; }
+.rcs-review-stars { color: #fbbc04; font-size: 17px; letter-spacing: 1px; margin-bottom: 6px; }
+.rcs-review-time { color: #808080; font-size: 12px; font-family: 'Lato', Helvetica, Arial, sans-serif; letter-spacing: 0; margin-left: 6px; }
+.rcs-review-title { font-family: 'Poppins', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 15px; color: #131315; margin-bottom: 4px; }
+.rcs-review-text { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 14.5px; line-height: 1.6; color: #333; white-space: pre-line; margin: 0; }
