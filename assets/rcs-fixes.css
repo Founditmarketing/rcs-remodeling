@@ -477,6 +477,73 @@ img.wp-image-61 {
 }
 .rcs-review-more:hover { text-decoration: underline; }
 
+/* ---------- 13. NON-HOME PAGES: hero centering, mobile text & spacing cleanup ---------- */
+/* Heroes: vertically center the content so top & bottom spacing is equal.
+   Scoped per-breakpoint to the SHOWN hero (section_0 on desktop, section_1 on
+   phone/tablet) so we never override the display:none that hides the other
+   variant — otherwise both hero copies would stack. */
+@media (min-width: 981px) {
+  body:not(.home) .et_pb_section_0.custom_header_image {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  /* the desktop hero title module carries a large padding-top (~157px) that
+     pushed it low; zero it so flex-centering yields equal top/bottom spacing */
+  body:not(.home) .et_pb_section_0.custom_header_image .et_pb_text {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+@media (max-width: 980px) {
+  body:not(.home) .et_pb_section_1.custom_header_image {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+body:not(.home) .et_pb_section.custom_header_image > .et_pb_row {
+  width: 100%;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+/* Content images stay visible and never overflow their column. */
+body:not(.home) .et_pb_image img,
+body:not(.home) .et_pb_blurb .et_pb_main_blurb_image img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+@media (max-width: 767px) {
+  /* Hero: comfortable, equal spacing on phones */
+  body:not(.home) .et_pb_section_1.custom_header_image {
+    min-height: 44vh;
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+  /* Hero title sized for phones (was ~62px) */
+  body:not(.home) .custom_header_image .et_pb_text_inner h1 {
+    font-size: 40px !important;
+    line-height: 1.12 !important;
+  }
+  /* Cap oversized content headings (were ~50px) */
+  body:not(.home) .et_pb_section:not(.custom_header_image) .et_pb_text_inner h1 {
+    font-size: 30px !important;
+    line-height: 1.18 !important;
+  }
+  body:not(.home) .et_pb_section:not(.custom_header_image) .et_pb_text_inner h2 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+  /* Trim excessive section padding (was ~100px) so sections aren't so far apart */
+  body:not(.home) .et_pb_section:not(.custom_header_image) {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+  }
+}
+
 /* ---------- 12. OUR SERVICES: real photo background (replaces stock jackhammer) ----------
    A real RCS interior sits behind a soft cream wash so it stays subtle and the
    existing dark heading + cards remain readable. */
