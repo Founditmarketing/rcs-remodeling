@@ -23,6 +23,12 @@ _Last updated: 2026-07-14_
 - Long reviews are truncated to ~50 words with a **Read more / Read less** toggle.
 - Removed some stray code that had leaked into the "Why Choose" intro text.
 
+## Update — Our Services background
+
+- Replaced the stock **jackhammer** background behind "Our Services" with a real
+  RCS interior photo (`room-two-windows.jpg`) under a soft cream wash, so it's
+  subtle and the existing dark headings/cards stay readable.
+
 ## Update — "Why Choose" image carousel
 
 - The "Why Choose RCS Remodeling?" image is now a **single-frame carousel** with

@@ -476,3 +476,16 @@ img.wp-image-61 {
   cursor: pointer;
 }
 .rcs-review-more:hover { text-decoration: underline; }
+
+/* ---------- 12. OUR SERVICES: real photo background (replaces stock jackhammer) ----------
+   A real RCS interior sits behind a soft cream wash so it stays subtle and the
+   existing dark heading + cards remain readable. */
+.home #our-services.et_pb_section_4 {
+  background-color: #FCFBF4 !important;
+  background-image:
+    linear-gradient(rgba(252, 251, 244, 0.82), rgba(252, 251, 244, 0.82)),
+    url(/wp-content/uploads/real/room-two-windows.jpg) !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
