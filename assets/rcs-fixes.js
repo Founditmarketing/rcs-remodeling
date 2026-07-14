@@ -63,6 +63,28 @@
       btn.addEventListener('click', function () { expanded = !expanded; render(); });
       render();
     });
+
+    // "Why Choose Us" single-frame image carousel (prev/next arrows).
+    document.querySelectorAll('[data-rcs-carousel]').forEach(function (car) {
+      if (car.dataset.rcsInit) return;
+      car.dataset.rcsInit = '1';
+      var track = car.querySelector('.rcs-carousel-track');
+      var slides = car.querySelectorAll('.rcs-carousel-slide');
+      var prev = car.querySelector('.rcs-carousel-prev');
+      var next = car.querySelector('.rcs-carousel-next');
+      if (!track || slides.length < 2) {
+        if (prev) prev.style.display = 'none';
+        if (next) next.style.display = 'none';
+        return;
+      }
+      var i = 0;
+      function go(n) {
+        i = (n + slides.length) % slides.length;
+        track.style.transform = 'translateX(' + (-i * 100) + '%)';
+      }
+      if (prev) prev.addEventListener('click', function () { go(i - 1); });
+      if (next) next.addEventListener('click', function () { go(i + 1); });
+    });
   }
 
   if (document.readyState === 'loading') {

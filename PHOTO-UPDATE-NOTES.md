@@ -16,11 +16,18 @@ _Last updated: 2026-07-14_
 - **"Why Choose" image top-aligned with the section title** — the photo now starts
   level with the "Why choose RCS Remodeling?" heading on desktop.
 
-## Update — bigger "Why Choose" photo
+## Update — header badge spacing & review "Read more"
 
-- The single photo in the "Why Choose RCS Remodeling?" section now fills its
-  column and is much larger (≈484×600 on desktop, full-width on mobile) so it
-  anchors the section.
+- The desktop logo+BBB was a single image; split it so the **BBB badge now sits
+  next to the Terrell badge** (small gap) with clear space away from the logo.
+- Long reviews are truncated to ~50 words with a **Read more / Read less** toggle.
+- Removed some stray code that had leaked into the "Why Choose" intro text.
+
+## Update — "Why Choose" image carousel
+
+- The "Why Choose RCS Remodeling?" image is now a **single-frame carousel** with
+  left/right arrows, rotating through 7 project photos (living room, dining room,
+  bathroom, staircase, foyer, built-ins, windows). One image shows at a time.
 
 ## Update — menu one-line, mobile menu & contact form
 
