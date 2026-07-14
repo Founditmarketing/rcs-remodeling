@@ -275,25 +275,40 @@ img.wp-image-61 {
 
 /* ---------- 7. DESKTOP: keep all header menu items on ONE line ---------- */
 @media (min-width: 981px) {
-  /* column split: more room for a bigger logo/badge, menu still wide enough
-     to keep all items on one line */
-  .et_pb_column_3_tb_header { width: 24% !important; }
-  .et_pb_column_4_tb_header { width: 9% !important; }
+  /* column split: [logo] | [BBB + Terrell group] | [menu].
+     Logo image was split from the combined logo/BBB PNG so the BBB badge can
+     sit next to Terrell, away from the logo. Heights stay below the menu
+     module (~54px) so the header height does not grow. */
+  .et_pb_column_3_tb_header { width: 13% !important; }
+  .et_pb_column_4_tb_header { width: 20% !important; }
   .et_pb_column_5_tb_header { width: 67% !important; }
-  /* Enlarge logo + Terrell badge. Heights stay below the menu module (~54px),
-     which drives the header height, so the header does NOT get taller. */
+  /* logo (logo-only crop) */
   .et_pb_image_2_tb_header { width: 100% !important; max-width: 100% !important; }
   .et_pb_image_2_tb_header img {
     width: auto !important;
     max-width: 100% !important;
     height: auto !important;
-    max-height: 50px !important;
+    max-height: 48px !important;
   }
-  .et_pb_image_3_tb_header { width: auto !important; max-width: 100% !important; }
-  .et_pb_image_3_tb_header img {
+  /* BBB + Terrell grouped close together and vertically centered; the gap
+     from the logo comes from the column split (clears the old -182px margin) */
+  .et_pb_column_4_tb_header .et_pb_image_3_tb_header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
     width: auto !important;
     max-width: 100% !important;
-    height: 46px !important;
+    margin: 0 0 0 20px !important;   /* guaranteed gap from the logo at all widths */
+  }
+  .et_pb_column_4_tb_header .et_pb_image_3_tb_header a {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+  }
+  .et_pb_column_4_tb_header .et_pb_image_3_tb_header img {
+    height: 44px !important;
+    width: auto !important;
+    max-width: none !important;
   }
   /* never wrap the top row; flex-wrap (not white-space) keeps items on one
      line so nowrap does NOT inherit into the dropdown submenu. */
@@ -417,3 +432,16 @@ img.wp-image-61 {
 .rcs-review-time { color: #808080; font-size: 12px; font-family: 'Lato', Helvetica, Arial, sans-serif; letter-spacing: 0; margin-left: 6px; }
 .rcs-review-title { font-family: 'Poppins', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 15px; color: #131315; margin-bottom: 4px; }
 .rcs-review-text { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 14.5px; line-height: 1.6; color: #333; white-space: pre-line; margin: 0; }
+.rcs-review-more {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #731716;
+  cursor: pointer;
+}
+.rcs-review-more:hover { text-decoration: underline; }

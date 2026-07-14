@@ -41,6 +41,28 @@
         }
       });
     });
+
+    // Reviews: truncate to ~50 words with a "Read more" / "Read less" toggle.
+    var WORD_LIMIT = 50;
+    document.querySelectorAll('.rcs-review-text').forEach(function (el) {
+      if (el.dataset.rcsTrunc) return;
+      var full = el.textContent.trim();
+      var words = full.split(/\s+/);
+      if (words.length <= WORD_LIMIT) return;
+      el.dataset.rcsTrunc = '1';
+      var short = words.slice(0, WORD_LIMIT).join(' ') + '…';
+      var expanded = false;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'rcs-review-more';
+      function render() {
+        el.textContent = expanded ? full : short;
+        btn.textContent = expanded ? 'Read less' : 'Read more';
+        el.parentNode.insertBefore(btn, el.nextSibling);
+      }
+      btn.addEventListener('click', function () { expanded = !expanded; render(); });
+      render();
+    });
   }
 
   if (document.readyState === 'loading') {
