@@ -483,14 +483,21 @@ img.wp-image-61 {
    phone/tablet) so we never override the display:none that hides the other
    variant — otherwise both hero copies would stack. */
 @media (min-width: 981px) {
+  /* Hero: generous top (clears the floating header) + reduced bottom padding,
+     so the hero is tighter at the bottom and content isn't so far from the
+     next section. height:auto makes the explicit padding define the box. */
   body:not(.home) .et_pb_section_0.custom_header_image {
     display: flex !important;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: auto !important;
+    min-height: 0 !important;
+    padding-top: 140px !important;
+    padding-bottom: 66px !important;
   }
-  /* the desktop hero title module carries a large padding-top (~157px) that
-     pushed it low; zero it so flex-centering yields equal top/bottom spacing */
+  /* the desktop hero title module carries a large padding-top (~157px); zero it
+     so the section padding controls the spacing */
   body:not(.home) .et_pb_section_0.custom_header_image .et_pb_text {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -509,19 +516,23 @@ body:not(.home) .et_pb_section.custom_header_image > .et_pb_row {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
-/* Content images stay visible and never overflow their column. */
-body:not(.home) .et_pb_image img,
-body:not(.home) .et_pb_blurb .et_pb_main_blurb_image img {
+/* Content images stay visible and never overflow their column.
+   Scoped to #main-content so it never touches the shared header/footer images
+   (otherwise it overrides the header logo/badge sizing on non-home pages and
+   the header stops matching the homepage). */
+body:not(.home) #main-content .et_pb_image img,
+body:not(.home) #main-content .et_pb_blurb .et_pb_main_blurb_image img {
   max-width: 100% !important;
   height: auto !important;
 }
 
 @media (max-width: 767px) {
-  /* Hero: comfortable, equal spacing on phones */
+  /* Hero: clear the floating header up top, but reduced bottom padding */
   body:not(.home) .et_pb_section_1.custom_header_image {
-    min-height: 44vh;
-    padding-top: 64px !important;
-    padding-bottom: 64px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding-top: 100px !important;
+    padding-bottom: 40px !important;
   }
   /* Hero title sized for phones (was ~62px) */
   body:not(.home) .custom_header_image .et_pb_text_inner h1 {
@@ -529,18 +540,28 @@ body:not(.home) .et_pb_blurb .et_pb_main_blurb_image img {
     line-height: 1.12 !important;
   }
   /* Cap oversized content headings (were ~50px) */
-  body:not(.home) .et_pb_section:not(.custom_header_image) .et_pb_text_inner h1 {
+  body:not(.home) #main-content .et_pb_section:not(.custom_header_image) .et_pb_text_inner h1 {
     font-size: 30px !important;
     line-height: 1.18 !important;
   }
-  body:not(.home) .et_pb_section:not(.custom_header_image) .et_pb_text_inner h2 {
+  body:not(.home) #main-content .et_pb_section:not(.custom_header_image) .et_pb_text_inner h2 {
     font-size: 22px !important;
     line-height: 1.25 !important;
   }
   /* Trim excessive section padding (was ~100px) so sections aren't so far apart */
-  body:not(.home) .et_pb_section:not(.custom_header_image) {
+  body:not(.home) #main-content .et_pb_section:not(.custom_header_image) {
     padding-top: 50px !important;
     padding-bottom: 50px !important;
+  }
+  /* Body copy: smaller text + wider columns to use the mobile screen (was 18px
+     in a row inset ~39px each side, leaving lots of wasted horizontal space) */
+  body:not(.home) #main-content .et_pb_section:not(.custom_header_image) p {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+  }
+  body:not(.home) #main-content .et_pb_section:not(.custom_header_image) .et_pb_row {
+    width: 92% !important;
+    max-width: 92% !important;
   }
 }
 
