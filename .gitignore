@@ -2,3 +2,4 @@ hts-cache/
 hts-log.txt
 cookies.txt
 .DS_Store
+public/
