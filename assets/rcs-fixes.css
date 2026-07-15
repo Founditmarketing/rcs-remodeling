@@ -666,3 +666,37 @@ body:not(.home) #main-content .et_pb_blurb .et_pb_main_blurb_image img {
   .rcs-lb-img { max-width: 94vw; max-height: 74vh; }
   .rcs-lb-counter { top: 18px; left: 14px; font-size: 13px; }
 }
+
+/* ---------- 15. SERVICE / NON-HOME BODY: uniform image cards + spacing ----------
+   The body sections displayed photos at inconsistent sizes with object-fit:fill
+   and heavy, uneven drop-shadows. Normalize every body image to a clean 3:2
+   card (cover-cropped, consistent radius + subtle shadow) filling its column,
+   and give the sections a consistent vertical rhythm. */
+body:not(.home) #main-content .et_pb_image,
+body:not(.home) #main-content .et_pb_image .et_pb_image_wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  display: block !important;
+}
+body:not(.home) #main-content .et_pb_image .box-shadow-overlay { display: none !important; }
+body:not(.home) #main-content .et_pb_image img {
+  width: 100% !important;
+  aspect-ratio: 3 / 2;
+  height: auto !important;
+  object-fit: cover !important;
+  border-radius: 10px !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14) !important;
+  display: block !important;
+}
+/* Consistent vertical rhythm between body sections on desktop/tablet
+   (mobile is handled at 50px in section 13). */
+@media (min-width: 768px) {
+  body:not(.home) #main-content .et_pb_section:not(.custom_header_image) {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+  /* keep image rows tidy: even gutters, top-aligned with their text */
+  body:not(.home) #main-content .et_pb_row,
+  body:not(.home) #main-content .et_pb_row_inner { align-items: flex-start; }
+}
