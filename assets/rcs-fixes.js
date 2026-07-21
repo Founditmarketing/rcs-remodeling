@@ -89,11 +89,17 @@
     // Gallery lightbox with prev/next navigation, counter, keyboard + swipe.
     var galleryLinks = [].slice.call(document.querySelectorAll('.rcs-gallery-grid a[href]'));
     if (galleryLinks.length) {
-      var items = galleryLinks.map(function (a) {
-        var im = a.querySelector('img');
-        return { src: a.getAttribute('href'), cap: (im && im.getAttribute('alt')) || a.getAttribute('title') || '' };
-      });
+      var items = [];
       var idx = 0;
+      // Build the item list from only the VISIBLE gallery links — a page can have
+      // duplicate desktop/mobile grids and only one is shown at a time.
+      function lbCollect() {
+        var vis = galleryLinks.filter(function (a) { return a.offsetParent !== null || a.getClientRects().length; });
+        items = vis.map(function (a) {
+          var im = a.querySelector('img');
+          return { el: a, src: a.getAttribute('href'), cap: (im && im.getAttribute('alt')) || a.getAttribute('title') || '' };
+        });
+      }
       var lb = document.createElement('div');
       lb.className = 'rcs-lightbox';
       lb.setAttribute('aria-hidden', 'true');
@@ -114,10 +120,15 @@
         lbCap.textContent = items[idx].cap;
         lbCount.textContent = (idx + 1) + ' / ' + items.length;
       }
-      function lbOpen(n) { lbShow(n); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+      function lbOpen(link) {
+        lbCollect();
+        var start = 0;
+        for (var j = 0; j < items.length; j++) { if (items[j].el === link) { start = j; break; } }
+        lbShow(start); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
+      }
       function lbClose() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
-      galleryLinks.forEach(function (a, i) {
-        a.addEventListener('click', function (e) { e.preventDefault(); lbOpen(i); });
+      galleryLinks.forEach(function (a) {
+        a.addEventListener('click', function (e) { e.preventDefault(); lbOpen(a); });
       });
       lb.querySelector('.rcs-lb-next').addEventListener('click', function (e) { e.stopPropagation(); lbShow(idx + 1); });
       lb.querySelector('.rcs-lb-prev').addEventListener('click', function (e) { e.stopPropagation(); lbShow(idx - 1); });
