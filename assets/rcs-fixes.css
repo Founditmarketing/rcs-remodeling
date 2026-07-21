@@ -706,3 +706,40 @@ body:not(.home) #main-content .et_pb_image img {
 .rcs-video-section h1{color:#000;}
 .rcs-video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;max-width:900px;margin:22px auto 0;}
 .rcs-video-grid video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.25);background:#000;display:block;}
+
+/* ---------- 15. SERVICE-PAGE CONTENT SECTIONS: match homepage "Our Services" ----------
+   The parallax_hover content sections (e.g. "Professional Squatter Removal
+   Services") used busy stock backgrounds. Give them a newer real photo behind a
+   heavy cream wash (like the homepage Our Services), so the dark text stays
+   readable and the look is consistent. */
+body:not(.home) .et_pb_section_parallax_hover .et_parallax_bg_wrap { display: none !important; }
+
+body.page-id-747 #main-content .et_pb_section_4.et_pb_section,
+body.page-id-747 #main-content .et_pb_section_5.et_pb_section {
+  background-color: #FCFBF4 !important;
+  background-image: linear-gradient(rgba(252,251,244,0.85), rgba(252,251,244,0.85)), url(/wp-content/uploads/real/bright-room-windows.jpg) !important;
+  background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important; background-attachment: scroll !important;
+}
+body.page-id-226 #main-content .et_pb_section_3.et_pb_section {
+  background-color: #FCFBF4 !important;
+  background-image: linear-gradient(rgba(252,251,244,0.85), rgba(252,251,244,0.85)), url(/wp-content/uploads/real/dining-room-chandelier.jpg) !important;
+  background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important; background-attachment: scroll !important;
+}
+body.page-id-249 #main-content .et_pb_section_3.et_pb_section,
+body.page-id-249 #main-content .et_pb_section_4.et_pb_section {
+  background-color: #FCFBF4 !important;
+  background-image: linear-gradient(rgba(252,251,244,0.85), rgba(252,251,244,0.85)), url(/wp-content/uploads/real/living-room-windows.jpg) !important;
+  background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important; background-attachment: scroll !important;
+}
+body.page-id-266 #main-content .et_pb_section_4.et_pb_section,
+body.page-id-266 #main-content .et_pb_section_5.et_pb_section {
+  background-color: #FCFBF4 !important;
+  background-image: linear-gradient(rgba(252,251,244,0.85), rgba(252,251,244,0.85)), url(/wp-content/uploads/real/living-room-fireplace.jpg) !important;
+  background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important; background-attachment: scroll !important;
+}
+body.page-id-296 #main-content .et_pb_section_4.et_pb_section,
+body.page-id-296 #main-content .et_pb_section_5.et_pb_section {
+  background-color: #FCFBF4 !important;
+  background-image: linear-gradient(rgba(252,251,244,0.85), rgba(252,251,244,0.85)), url(/wp-content/uploads/real/room-windows-fan.jpg) !important;
+  background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important; background-attachment: scroll !important;
+}
