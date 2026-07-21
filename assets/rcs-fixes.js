@@ -6,6 +6,18 @@
    ============================================================ */
 (function () {
   function init() {
+    // Gallery page: shuffle the grid so the work samples show in a fresh,
+    // random order on every visit (marker class added only on the gallery page).
+    document.querySelectorAll('.rcs-gallery-shuffle').forEach(function (grid) {
+      var items = [].slice.call(grid.children);
+      if (items.length < 2) return;
+      for (var k = items.length - 1; k > 0; k--) {
+        var j = Math.floor(Math.random() * (k + 1));
+        var tmp = items[k]; items[k] = items[j]; items[j] = tmp;
+      }
+      items.forEach(function (el) { grid.appendChild(el); });
+    });
+
     document.querySelectorAll('.et_pb_menu__wrap').forEach(function (wrap) {
       var source = wrap.querySelector('ul.et-menu');
       var mobileNav = wrap.querySelector('.et_mobile_nav_menu .mobile_nav');
