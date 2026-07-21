@@ -700,3 +700,9 @@ body:not(.home) #main-content .et_pb_image img {
   body:not(.home) #main-content .et_pb_row,
   body:not(.home) #main-content .et_pb_row_inner { align-items: flex-start; }
 }
+
+
+/* ---------- 15. SQUATTER: client video gallery ---------- */
+.rcs-video-section h1{color:#000;}
+.rcs-video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;max-width:900px;margin:22px auto 0;}
+.rcs-video-grid video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.25);background:#000;display:block;}
