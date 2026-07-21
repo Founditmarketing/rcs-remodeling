@@ -752,3 +752,44 @@ body.page-id-296 #main-content .et_pb_section_5.et_pb_section {
   background-image: linear-gradient(rgba(252,251,244,0.85), rgba(252,251,244,0.85)), url(/wp-content/uploads/real/room-windows-fan.jpg) !important;
   background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important; background-attachment: scroll !important;
 }
+
+
+/* ---------- 16. GALLERY: category filter tabs (like the Services menu) ---------- */
+/* Hide filtered-out tiles. Needs the extra .rcs-hide class + !important to beat
+   the section-1 ".et_pb_gallery_item { display:block !important }" rule. */
+.et_pb_gallery .et_pb_gallery_item.rcs-hide { display: none !important; }
+.rcs-gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 900px;
+  margin: 0 auto 34px;
+}
+.rcs-gallery-filter {
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  color: #4a4038;
+  background: #fff;
+  border: 1px solid #e4ddcc;
+  border-radius: 999px;
+  padding: 11px 22px;
+  cursor: pointer;
+  transition: color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.rcs-gallery-filter:hover {
+  color: #731716;
+  border-color: #731716;
+}
+.rcs-gallery-filter.is-active {
+  color: #fff;
+  background: #731716;
+  border-color: #731716;
+  box-shadow: 0 4px 12px rgba(115,23,22,0.28);
+}
+@media (max-width: 767px) {
+  .rcs-gallery-filters { gap: 8px; margin-bottom: 24px; }
+  .rcs-gallery-filter { font-size: 13px; padding: 9px 16px; }
+}

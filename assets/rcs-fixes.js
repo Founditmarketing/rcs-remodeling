@@ -18,6 +18,28 @@
       items.forEach(function (el) { grid.appendChild(el); });
     });
 
+    // Gallery page: category filter tabs (All / Remodeling / Debris Removal / …).
+    // Hiding non-matching items also scopes the lightbox, which only collects
+    // VISIBLE gallery links, so next/prev cycles within the chosen category.
+    document.querySelectorAll('.rcs-gallery-filters').forEach(function (bar) {
+      var grid = document.querySelector('.rcs-gallery-shuffle');
+      if (!grid) return;
+      var btns = [].slice.call(bar.querySelectorAll('.rcs-gallery-filter'));
+      var items = [].slice.call(grid.querySelectorAll('.et_pb_gallery_item'));
+      bar.addEventListener('click', function (e) {
+        var btn = e.target.closest('.rcs-gallery-filter');
+        if (!btn) return;
+        var f = btn.getAttribute('data-filter');
+        btns.forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+        items.forEach(function (it) {
+          var show = (f === 'all' || it.getAttribute('data-cat') === f);
+          // Use a class (not inline display) so it beats the grid's
+          // ".et_pb_gallery_item { display:block !important }" rule.
+          it.classList.toggle('rcs-hide', !show);
+        });
+      });
+    });
+
     document.querySelectorAll('.et_pb_menu__wrap').forEach(function (wrap) {
       var source = wrap.querySelector('ul.et-menu');
       var mobileNav = wrap.querySelector('.et_mobile_nav_menu .mobile_nav');
