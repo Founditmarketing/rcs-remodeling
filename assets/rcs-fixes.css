@@ -706,6 +706,15 @@ body:not(.home) #main-content .et_pb_image img {
 .rcs-video-section h1{color:#000;}
 .rcs-video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;max-width:900px;margin:22px auto 0;}
 .rcs-video-grid video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.25);background:#000;display:block;}
+@media (max-width:767px){
+  /* Phone: the row's inline width:80% collapsed the gallery to one ~300px
+     column of very tall clips. Use more of the screen and show the vertical
+     clips 2-up (reel style) so it fits without an endless scroll. */
+  .rcs-video-section{padding:44px 0 !important;}
+  .rcs-video-section .et_pb_row{width:92% !important;}
+  .rcs-video-grid{grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+  .rcs-video-grid video{border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.22);}
+}
 
 /* ---------- 15. SERVICE-PAGE CONTENT SECTIONS: match homepage "Our Services" ----------
    The parallax_hover content sections (e.g. "Professional Squatter Removal
