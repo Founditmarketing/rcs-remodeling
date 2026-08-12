@@ -41,6 +41,17 @@
   ],
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.rcsremodelingtx.com"
+        }
+      ],
+      "destination": "https://rcsremodelingtx.com/:path*",
+      "statusCode": 301
+    },
+    {
       "source": "/index.php/:path*",
       "destination": "/:path*",
       "statusCode": 301

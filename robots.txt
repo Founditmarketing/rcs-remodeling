@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /wp-admin/
+Disallow: /wp-json/
+Disallow: /wp-content/uploads/wp-*.php
+
+Sitemap: https://rcsremodelingtx.com/sitemap.xml
