@@ -40,6 +40,39 @@
       });
     });
 
+    // Hero video: the export ships the same 6 MB clip in two Divi sections —
+    // section_0 for >=981px, section_1 below it — and CSS hides whichever one
+    // doesn't match the breakpoint. display:none does NOT stop a <video> from
+    // downloading, and autoplay overrides preload, so both used to pull the
+    // whole file: 12 MB of transfer for 6 MB of visible video. The markup now
+    // ships no <source> at all; attach it to the rendered one only, and
+    // re-check when a resize flips the breakpoint.
+    var heroes = [].slice.call(document.querySelectorAll('video.rcs-hero-video'));
+    if (heroes.length) {
+      var syncHeroes = function () {
+        heroes.forEach(function (v) {
+          var section = v.closest('.et_pb_section');
+          var shown = !section || getComputedStyle(section).display !== 'none';
+          if (!shown) { if (!v.paused) v.pause(); return; }
+          if (!v.dataset.rcsLoaded) {
+            v.dataset.rcsLoaded = '1';
+            v.src = v.getAttribute('data-src');
+            v.load();
+          }
+          var played = v.play();
+          // Autoplay can still be refused (Low Power Mode, reduced-motion
+          // settings); the section keeps its background image underneath.
+          if (played && played.catch) played.catch(function () {});
+        });
+      };
+      syncHeroes();
+      var heroResize;
+      window.addEventListener('resize', function () {
+        clearTimeout(heroResize);
+        heroResize = setTimeout(syncHeroes, 200);
+      });
+    }
+
     document.querySelectorAll('.et_pb_menu__wrap').forEach(function (wrap) {
       var source = wrap.querySelector('ul.et-menu');
       var mobileNav = wrap.querySelector('.et_mobile_nav_menu .mobile_nav');
